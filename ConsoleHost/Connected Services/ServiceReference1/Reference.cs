@@ -15,15 +15,18 @@ namespace ConsoleHost.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Person", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/")]
     [System.SerializableAttribute()]
-    public partial class Person : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AgeField;
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
@@ -39,14 +42,27 @@ namespace ConsoleHost.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Age {
+        public string Email {
             get {
-                return this.AgeField;
+                return this.EmailField;
             }
             set {
-                if ((this.AgeField.Equals(value) != true)) {
-                    this.AgeField = value;
-                    this.RaisePropertyChanged("Age");
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
                 }
             }
         }
@@ -84,18 +100,41 @@ namespace ConsoleHost.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SayHello", ReplyAction="http://tempuri.org/IService/SayHelloResponse")]
         System.Threading.Tasks.Task<string> SayHelloAsync(string name);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPerson", ReplyAction="http://tempuri.org/IService/GetPersonResponse")]
-        ConsoleHost.ServiceReference1.Person GetPerson(string name);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserById", ReplyAction="http://tempuri.org/IService/GetUserByIdResponse")]
+        ConsoleHost.ServiceReference1.User GetUserById(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPerson", ReplyAction="http://tempuri.org/IService/GetPersonResponse")]
-        System.Threading.Tasks.Task<ConsoleHost.ServiceReference1.Person> GetPersonAsync(string name);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserById", ReplyAction="http://tempuri.org/IService/GetUserByIdResponse")]
+        System.Threading.Tasks.Task<ConsoleHost.ServiceReference1.User> GetUserByIdAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CustomError", ReplyAction="http://tempuri.org/IService/CustomErrorResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(string), Action="http://tempuri.org/IService/CustomErrorStringFault", Name="string", Namespace="http://schemas.microsoft.com/2003/10/Serialization/")]
-        void CustomError(bool throwError);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllUsers", ReplyAction="http://tempuri.org/IService/GetAllUsersResponse")]
+        ConsoleHost.ServiceReference1.User[] GetAllUsers();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CustomError", ReplyAction="http://tempuri.org/IService/CustomErrorResponse")]
-        System.Threading.Tasks.Task CustomErrorAsync(bool throwError);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllUsers", ReplyAction="http://tempuri.org/IService/GetAllUsersResponse")]
+        System.Threading.Tasks.Task<ConsoleHost.ServiceReference1.User[]> GetAllUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddUser", ReplyAction="http://tempuri.org/IService/AddUserResponse")]
+        void AddUser(ConsoleHost.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddUser", ReplyAction="http://tempuri.org/IService/AddUserResponse")]
+        System.Threading.Tasks.Task AddUserAsync(ConsoleHost.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SayHelloJson", ReplyAction="http://tempuri.org/IService/SayHelloJsonResponse")]
+        string SayHelloJson(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SayHelloJson", ReplyAction="http://tempuri.org/IService/SayHelloJsonResponse")]
+        System.Threading.Tasks.Task<string> SayHelloJsonAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllUsersJson", ReplyAction="http://tempuri.org/IService/GetAllUsersJsonResponse")]
+        ConsoleHost.ServiceReference1.User[] GetAllUsersJson();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllUsersJson", ReplyAction="http://tempuri.org/IService/GetAllUsersJsonResponse")]
+        System.Threading.Tasks.Task<ConsoleHost.ServiceReference1.User[]> GetAllUsersJsonAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddUserJson", ReplyAction="http://tempuri.org/IService/AddUserJsonResponse")]
+        ConsoleHost.ServiceReference1.User AddUserJson(ConsoleHost.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddUserJson", ReplyAction="http://tempuri.org/IService/AddUserJsonResponse")]
+        System.Threading.Tasks.Task<ConsoleHost.ServiceReference1.User> AddUserJsonAsync(ConsoleHost.ServiceReference1.User user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -133,20 +172,52 @@ namespace ConsoleHost.ServiceReference1 {
             return base.Channel.SayHelloAsync(name);
         }
         
-        public ConsoleHost.ServiceReference1.Person GetPerson(string name) {
-            return base.Channel.GetPerson(name);
+        public ConsoleHost.ServiceReference1.User GetUserById(int id) {
+            return base.Channel.GetUserById(id);
         }
         
-        public System.Threading.Tasks.Task<ConsoleHost.ServiceReference1.Person> GetPersonAsync(string name) {
-            return base.Channel.GetPersonAsync(name);
+        public System.Threading.Tasks.Task<ConsoleHost.ServiceReference1.User> GetUserByIdAsync(int id) {
+            return base.Channel.GetUserByIdAsync(id);
         }
         
-        public void CustomError(bool throwError) {
-            base.Channel.CustomError(throwError);
+        public ConsoleHost.ServiceReference1.User[] GetAllUsers() {
+            return base.Channel.GetAllUsers();
         }
         
-        public System.Threading.Tasks.Task CustomErrorAsync(bool throwError) {
-            return base.Channel.CustomErrorAsync(throwError);
+        public System.Threading.Tasks.Task<ConsoleHost.ServiceReference1.User[]> GetAllUsersAsync() {
+            return base.Channel.GetAllUsersAsync();
+        }
+        
+        public void AddUser(ConsoleHost.ServiceReference1.User user) {
+            base.Channel.AddUser(user);
+        }
+        
+        public System.Threading.Tasks.Task AddUserAsync(ConsoleHost.ServiceReference1.User user) {
+            return base.Channel.AddUserAsync(user);
+        }
+        
+        public string SayHelloJson(string name) {
+            return base.Channel.SayHelloJson(name);
+        }
+        
+        public System.Threading.Tasks.Task<string> SayHelloJsonAsync(string name) {
+            return base.Channel.SayHelloJsonAsync(name);
+        }
+        
+        public ConsoleHost.ServiceReference1.User[] GetAllUsersJson() {
+            return base.Channel.GetAllUsersJson();
+        }
+        
+        public System.Threading.Tasks.Task<ConsoleHost.ServiceReference1.User[]> GetAllUsersJsonAsync() {
+            return base.Channel.GetAllUsersJsonAsync();
+        }
+        
+        public ConsoleHost.ServiceReference1.User AddUserJson(ConsoleHost.ServiceReference1.User user) {
+            return base.Channel.AddUserJson(user);
+        }
+        
+        public System.Threading.Tasks.Task<ConsoleHost.ServiceReference1.User> AddUserJsonAsync(ConsoleHost.ServiceReference1.User user) {
+            return base.Channel.AddUserJsonAsync(user);
         }
     }
 }

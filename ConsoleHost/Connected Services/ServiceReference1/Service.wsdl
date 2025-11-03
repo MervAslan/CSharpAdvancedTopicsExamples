@@ -13,34 +13,70 @@
   <wsdl:message name="IService_SayHello_OutputMessage">
     <wsdl:part name="parameters" element="tns:SayHelloResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_GetPerson_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetPerson" />
+  <wsdl:message name="IService_GetUserById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserById" />
   </wsdl:message>
-  <wsdl:message name="IService_GetPerson_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPersonResponse" />
+  <wsdl:message name="IService_GetUserById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByIdResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_CustomError_InputMessage">
-    <wsdl:part name="parameters" element="tns:CustomError" />
+  <wsdl:message name="IService_GetAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsers" />
   </wsdl:message>
-  <wsdl:message name="IService_CustomError_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CustomErrorResponse" />
+  <wsdl:message name="IService_GetAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_CustomError_StringFault_FaultMessage">
-    <wsdl:part xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q1:string" />
+  <wsdl:message name="IService_AddUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_SayHelloJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:SayHelloJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_SayHelloJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SayHelloJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetAllUsersJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetAllUsersJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddUserJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserJson" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddUserJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserJsonResponse" />
   </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="SayHello">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/SayHello" message="tns:IService_SayHello_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/SayHelloResponse" message="tns:IService_SayHello_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetPerson">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetPerson" message="tns:IService_GetPerson_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetPersonResponse" message="tns:IService_GetPerson_OutputMessage" />
+    <wsdl:operation name="GetUserById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetUserById" message="tns:IService_GetUserById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetUserByIdResponse" message="tns:IService_GetUserById_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CustomError">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/CustomError" message="tns:IService_CustomError_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/CustomErrorResponse" message="tns:IService_CustomError_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService/CustomErrorStringFault" name="StringFault" message="tns:IService_CustomError_StringFault_FaultMessage" />
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllUsers" message="tns:IService_GetAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllUsersResponse" message="tns:IService_GetAllUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddUser" message="tns:IService_AddUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddUserResponse" message="tns:IService_AddUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SayHelloJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SayHelloJson" message="tns:IService_SayHelloJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/SayHelloJsonResponse" message="tns:IService_SayHelloJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsersJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllUsersJson" message="tns:IService_GetAllUsersJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllUsersJsonResponse" message="tns:IService_GetAllUsersJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddUserJson" message="tns:IService_AddUserJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddUserJsonResponse" message="tns:IService_AddUserJson_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -54,8 +90,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPerson">
-      <soap:operation soapAction="http://tempuri.org/IService/GetPerson" style="document" />
+    <wsdl:operation name="GetUserById">
+      <soap:operation soapAction="http://tempuri.org/IService/GetUserById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -63,22 +99,55 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CustomError">
-      <soap:operation soapAction="http://tempuri.org/IService/CustomError" style="document" />
+    <wsdl:operation name="GetAllUsers">
+      <soap:operation soapAction="http://tempuri.org/IService/GetAllUsers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="StringFault">
-        <soap:fault use="literal" name="StringFault" namespace="" />
-      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction="http://tempuri.org/IService/AddUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SayHelloJson">
+      <soap:operation soapAction="http://tempuri.org/IService/SayHelloJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsersJson">
+      <soap:operation soapAction="http://tempuri.org/IService/GetAllUsersJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserJson">
+      <soap:operation soapAction="http://tempuri.org/IService/AddUserJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service">
     <wsdl:port name="BasicHttpBinding_IService" binding="tns:BasicHttpBinding_IService">
-      <soap:address location="http://localhost:50637/Service.svc" />
+      <soap:address location="http://localhost:50637/Service.svc/soap" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -1,22 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Web;
-using System.Text;
-using System.Web.UI.WebControls.WebParts;
 
-// NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService" in both code and config file together.
 [ServiceContract]
 public interface IService
 {
 
-	[OperationContract]
-	string SayHello(string name);
-	[OperationContract]
-	Person GetPerson(string name);
+    [OperationContract]
+    string SayHello(string name);
 
-	
+    [OperationContract]
+    User GetUserById(int id);  
+
+    [OperationContract]
+    List<User> GetAllUsers();
+
+    [OperationContract]
+    void AddUser(User user);
+
+    [OperationContract]
+    [WebGet(UriTemplate = "/hello/{name}", ResponseFormat = WebMessageFormat.Json)]
+    string SayHelloJson(string name);
+
+    [OperationContract]
+    [WebGet(UriTemplate = "/users", ResponseFormat = WebMessageFormat.Json)]
+    List<User> GetAllUsersJson();
+
+    [OperationContract]
+    [WebInvoke(Method = "POST", UriTemplate = "/adduser/json",
+               RequestFormat = WebMessageFormat.Json,
+               ResponseFormat = WebMessageFormat.Json)]
+    User AddUserJson(User user);
 }
-

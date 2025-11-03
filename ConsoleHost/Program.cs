@@ -1,6 +1,6 @@
 ﻿using ConsoleHost.ServiceReference1;
 using System;
- 
+
 
 class Program
 {
@@ -8,11 +8,23 @@ class Program
     {
         var client = new ServiceClient();
 
-        string merhaba = client.SayHello("merve");
-        Console.WriteLine(merhaba);
+        Console.WriteLine(client.SayHello("merve"));
 
-        var person = client.GetPerson("ali");
-        Console.WriteLine($"isim: {person.Name}, yaş: {person.Age}");
+        var newUser = new User { Name = "merve", Email = "merve44@gmail.com" };
+        client.AddUser(newUser);
 
+        Console.WriteLine(client.SayHelloJson("ali"));
+        var user2 = new User { Name = "ali", Email = "ali42@gmail.com" };
+        client.AddUserJson(user2);
+
+        var users = client.GetAllUsers();
+        foreach (var u in users)
+            Console.WriteLine($"{u.Id} - {u.Name} ({u.Email})");
+
+        client.Close();
+        Console.ReadLine();
     }
 }
+
+
+
